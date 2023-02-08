@@ -1,0 +1,419 @@
+---
+title: "Untitled"
+author: "Egemen Özen"
+date: '2023-01-16'
+output: pdf_document
+---
+
+## Setup
+
+```{r setup, include=FALSE}
+#Reading dataset
+
+filename <- file.choose(visbanking_fds1)
+dataset <- readRDS(filename)
+head(dataset)
+
+#making categories by name
+
+categories <- split(dataset , dataset$Proper.Name)
+
+#just a few examples of the many types of plots
+
+library(ggplot2)
+
+```
+
+## Codes And Lines
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line1 <- ggplot(categories$`ACCUMULATED OTHER COMPREHENSIVE INCOME `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","yellow"))
+line1 + ggtitle("Accumulated Other Comprehensive Income") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black",),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"),legend.position = "removed")
+
+```
+
+```{r lines}
+options(scipen = 100,digits=4)
+line2 <- ggplot(categories$`ALLOWANCE FOR LOAN AND LEASE LOSSES`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line2 + ggtitle("Allowance For Loan And Lease Losses") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+```
+
+```{r lines}
+options(scipen = 100,digits=4)
+line3 <- ggplot(categories$`AVAILABLE-FOR-SALE SECURITIES `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line3 + ggtitle("Available-For-Sale Securities") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+options(scipen = 100,digits=4)
+line4 <- ggplot(categories$`COMMON STOCK `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line4 + ggtitle("Common Stock") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+options(scipen = 100,digits=4)
+line5 <- ggplot(categories$`DIRECT INDIRECT INVESTMENT IN REAL ESTATE ` , aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line5 + ggtitle("Direct Indirect Investment In Real Estate") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+options(scipen = 100,digits=4)
+line6 <- ggplot(categories$`EQUITY SECURITIES WITH READILY DETER `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line6 + ggtitle("Equity Securities With Readly Deter") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line7 <- ggplot(categories$`FEDERAL FUNDS PURCHASED IN DOMESTIC OFFICES`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line7 + ggtitle("Federal Funds Purchased In Domestic Offices") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line8 <- ggplot(categories$`FEDERAL FUNDS SOLD IN DOMESTIC OFFICES `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line8 + ggtitle("Federal Funds Sold In Domestic Offices") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+```
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line9 <- ggplot(categories$`GOODWILL `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line9 + ggtitle("Goodwill") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line10 <- ggplot(categories$`HELD TO MATURITY SECURITIES (ASU 201)`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line10 + ggtitle("Held To Maturity Securities (ASU 201)") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line11 <- ggplot(categories$`INTANGIBLE ASSETS `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line11 + ggtitle("Intangible Assets") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line12 <- ggplot(categories$`INTEREST-BEARING BALANCES DUE FRM DEPOSIT INSTITUTIONS `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line12 + ggtitle("Interest-Bearing Balances Due From Deposit Institutions") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line13 <- ggplot(categories$`INVEST. IN UNCONSOLIDATED SUBS & CO. `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line13 + ggtitle("Invest. In Unconsolidated Subs & Co.") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line14 <- ggplot(categories$`LOANS & LEASES, NET UNEARN INCOME & ALLOWANCE`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line14 + ggtitle("Loans & Leases, Net Unearn Income & Allowance") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line15 <- ggplot(categories$`LOANS & LEASES, NET UNEARNED INCOME `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line15 + ggtitle("Loans & Leases, Net Unearned Income") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line16 <- ggplot(categories$`LOANS AND LEASES HELD FOR SALE `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line16 + ggtitle("Loans And Leases Held For Sale") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line17 <- ggplot(categories$`MINORITY INTEREST IN CONSOLIDATED SUBSIDIARIES`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line17 + ggtitle("Minority Interest In Consolidated Subsidiaries") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line18 <- ggplot(categories$`NON-INTEREST BEARING DEPOSITS - DOMESTIC`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line18 + ggtitle("Non-Interest Bearing Deposits") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line19 <- ggplot(categories$`NON-INTEREST BEARING DEPOSITS - FOREIGN`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line19 + ggtitle("Non Interest Bearing Deposits - Foreign") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+```
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line20 <- ggplot(categories$`NONINTEREST-BEARING BALS & CURRENCY & COIN `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line20 + ggtitle("Non Interest bearing Bals & Currency & Coin") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line21 <- ggplot(categories$`OTHER ASSETS `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line21 + ggtitle("Other Assets") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line22 <- ggplot(categories$`OTHER BORROWED MONEY `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line22 + ggtitle("Other Borrowed Money") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line23 <- ggplot(categories$`OTHER IDENTIFIABLE INTANGIBLE ASSETS `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line23 + ggtitle("Other Identifiable Intangible Assets") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line24 <- ggplot(categories$`OTHER LIABILITIES, TOTAL `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line24 + ggtitle("Other Liabilities, Total") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line25 <- ggplot(categories$`OTHER REAL ESTATE OWNED `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line25  + ggtitle("Other Real Estate Owned") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line26 <- ggplot(categories$`PREMISES & FIXED ASSETS (INCL CAPITAL LEASES) `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line26 + ggtitle("Premises & Fixed Assets (INCL CAPİTAL LEASES)") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line27 <- ggplot(categories$`SECURITIES PURCHASED UNDER AGREEMENTS TO RESELL `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line27 + ggtitle("Securities Purchased Under Agreements To Resell") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line28 <- ggplot(categories$`SECURITIES SOLD UNDER AGREEMENTS TO REPURCHASE`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line28 + ggtitle("Securities Sold Under Agreements To Repurchase") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line29 <- ggplot(categories$`SUBORDINATED NOTES AND DEBENTURES `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line29 + ggtitle("Subordinated Notes And Debentures") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line30 <- ggplot(categories$`SURPLUS `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line30 + ggtitle("Surplus") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+```
+
+```{r lines}
+
+options(scipen = 100,digits=4)
+line31 <- ggplot(categories$`TOTAL ASSETS `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line31 + ggtitle("Total Assets") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line32 <- ggplot(categories$`TOTAL DEPOSITS - DOMESTIC`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line32 + ggtitle("Total Deposits - Domestic") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line33 <- ggplot(categories$`TOTAL DEPOSITS - FOREIGN`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line33 + ggtitle("Total Deposits - Foreign") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line34 <- ggplot(categories$`TOTAL EQUITY CAPITAL `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line34 + ggtitle("Total Equity Capital") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line35 <- ggplot(categories$`TOTAL EQUITY CAPITAL INCLUDING NONCONTROLLING MINORITY INTEREST`, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line35 + ggtitle("Total Equity Capital Including Noncontrolling Minority Interest") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line36 <- ggplot(categories$`TOTAL INTEREST BEARING DEPOSITS IN DOMESTIC & FOREIGN OFFICES `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line36 + ggtitle("Total Interest Bearing Deposits In Domestic & Foreign Offices") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line37 <- ggplot(categories$`TOTAL LIABILITIES `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line37 + ggtitle("Total Liabilities") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line38 <- ggplot(categories$`TOTAL LIABILITIES, RESERVE & CAPITAL ACCOUNTS `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line38 + ggtitle("Total Liabilities , Reserve & Capital Accounts") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line39 <- ggplot(categories$`TOTAL TRADING ASSETS `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line39 + ggtitle("Total Trading Assets") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+
+
+
+options(scipen = 100,digits=4)
+line40 <- ggplot(categories$`TRADING LIABILITIES `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line40 + ggtitle("Trading Liabilities") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+```
+
+```{r lines}
+options(scipen = 100,digits=4)
+line41 <- ggplot(categories$`UNDIVIDED PROFITS & CAPITAL RESERVES `, aes(x = Date, y = Value,fill=Date)) + geom_line(position = position_dodge(0.2)) + geom_point(size=2,shape=21,position = position_dodge(0.2))+scale_alpha_manual(values = c("red","blue"))
+line41 + ggtitle("Undivided Profits & Capital Reserves") + labs(x="Date",y="Values")+
+  scale_x_date(date_breaks = "3 months", date_labels = "%m/%y") +
+  scale_y_binned(labels = scales::dollar)+
+  theme(axis.title.x = element_text(size=13,face="bold",colour = "black"),axis.title.y =element_text(size=13,face="bold",colour = "black"),axis.text = element_text(size=9,color = "darkblue"))
+```
